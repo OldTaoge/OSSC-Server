@@ -1,6 +1,12 @@
 # OSSC
 
+## This is the repositories of server.
+
 ### OldTaoge Server Service Controller Server
+
+[The Main Introduce](https://github.com/OldTaoge/OSSC)
+
+[The Client Part](https://github.com/OldTaoge/OSSC-Client)
 
 A simple Master-slave server and service controller
 
