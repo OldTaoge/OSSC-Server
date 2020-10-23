@@ -19,4 +19,5 @@ Edit client's files and control services in one place
 - [ ] Http RestFul Client API
 - [ ] Config (file) Edit
 - [ ] Process Control
+- [ ] Log file Upload Realtime
 - [ ] WebSocket Connection
