@@ -11,6 +11,8 @@
 	<properties>
 		<java.version>11</java.version>
 		<spring-boot.version>2.4.2</spring-boot.version>
+		<hikaricp.version>4.0.1</hikaricp.version>
+		<mysql.version>8.0.23</mysql.version>
 	</properties>
 
     <licenses>
@@ -29,6 +31,7 @@
 
     <dependencyManagement>
         <dependencies>
+        <!-- Spring Boot Start -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
@@ -41,6 +44,35 @@
                 <version>${spring-boot.version}</version>
                 <scope>test</scope>
             </dependency>
+        <!-- Spring Boot Stop -->
+
+
+
+        <!-- DataSource Start -->
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP</artifactId>
+                <version>${hikaricp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-jdbc</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+        <!-- DataSource Stop -->
+
+
+
         </dependencies>
     </dependencyManagement>
 
