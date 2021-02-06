@@ -1,26 +1,31 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
+!**/src/test/**/target/
 
-## STS ##
+### STS ###
 .apt_generated
 .classpath
 .factorypath
 .project
 .settings
 .springBeans
+.sts4-cache
 
-## IntelliJ IDEA ##
+### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
 
-## JRebel ##
-rebel.xml
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-## MAC ##
-.DS_Store
-
-## Other ##
-logs/
-temp/
+### VS Code ###
+.vscode/
