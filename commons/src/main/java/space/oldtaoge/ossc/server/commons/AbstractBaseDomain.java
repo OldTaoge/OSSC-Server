@@ -1,4 +1,4 @@
-package space.oldtaoge.ossc.server.commons.dto;
+package space.oldtaoge.ossc.server.commons;
 
 import lombok.Data;
 

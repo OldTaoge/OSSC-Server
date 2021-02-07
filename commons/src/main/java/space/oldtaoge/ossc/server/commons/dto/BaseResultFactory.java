@@ -1,22 +1,24 @@
 package space.oldtaoge.ossc.server.commons.dto;
 
+import space.oldtaoge.ossc.server.commons.AbstractBaseDomain;
+
 import java.util.List;
 
 public class BaseResultFactory<T extends AbstractBaseDomain> {
 
     private static final String LOG_LEVEL = "DEBUG";
 
-    private static BaseResultFactory baseResultFactory;
+    private static BaseResultFactory<AbstractBaseDomain> baseResultFactory;
 
     private BaseResultFactory() {
 
     }
 
-    public static BaseResultFactory getInstance() {
+    public static BaseResultFactory<AbstractBaseDomain> getInstance() {
         if (baseResultFactory == null) {
             synchronized (BaseResultFactory.class) {
                 if (baseResultFactory == null) {
-                    baseResultFactory = new BaseResultFactory();
+                    baseResultFactory = new BaseResultFactory<>();
                 }
             }
         }
@@ -25,12 +27,12 @@ public class BaseResultFactory<T extends AbstractBaseDomain> {
 
 
     public AbstractBaseResult build(String self, T attributes) {
-        return new SuccessResult(self, attributes);
+        return new SuccessResult<>(self, attributes);
     }
 
 
     public AbstractBaseResult build(String self, int next, int last, List<T> attributes) {
-        return new SuccessResult(self, next, last, attributes);
+        return new SuccessResult<>(self, next, last, attributes);
     }
 
 

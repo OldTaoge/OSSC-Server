@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
+import space.oldtaoge.ossc.server.commons.AbstractBaseDomain;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
 @Data
 public class SuccessResult<T extends AbstractBaseDomain> extends AbstractBaseResult{
     private Links links;
-    private List<DataBean> data;
+    private List<DataBean<T>> data;
 
     public SuccessResult(String self, T attributes) {
         links = new Links();
@@ -34,7 +35,7 @@ public class SuccessResult<T extends AbstractBaseDomain> extends AbstractBaseRes
             data = Lists.newArrayList();
         }
 
-        DataBean dataBean = new DataBean();
+        DataBean<T> dataBean = new DataBean<>();
         dataBean.setId(attributes.getId());
         dataBean.setType(attributes.getClass().getSimpleName());
         dataBean.setAttributes(attributes);

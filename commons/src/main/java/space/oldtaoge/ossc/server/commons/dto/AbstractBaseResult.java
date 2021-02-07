@@ -1,14 +1,13 @@
 package space.oldtaoge.ossc.server.commons.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import space.oldtaoge.ossc.server.commons.AbstractBaseDomain;
 
 import java.io.Serializable;
 
 /**
  * 数据传输对象抽象类
- * @Author OldTaoge
  */
 @Data
 public abstract class AbstractBaseResult implements Serializable {
