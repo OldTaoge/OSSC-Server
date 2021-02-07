@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: server
+
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql.lan:3306/ossc?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: ossc
+    password: ossc
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 600000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+server:
+  port: 8080
+
+logging:
+  level:
+    space:
+      oldtaoge:
+        ossc:
+          server: DEBUG

@@ -18,6 +18,8 @@
 
     <modules>
         <module>dependencies</module>
+        <module>server</module>
+        <module>commons</module>
     </modules>
 
     <properties>
@@ -53,7 +55,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 
     <repositories>
         <repository>

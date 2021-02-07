@@ -10,7 +10,7 @@
 
 A simple Master-slave server and service controller
 
-Edit client's files and control services in one place
+Edit tbClient's files and control services in one place
 
 ### Features Points
 
