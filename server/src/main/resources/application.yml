@@ -1,6 +1,15 @@
 spring:
   application:
-    name: server
+    name: ossc-server
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos.sca.oldtaoge.space:8848
 
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
@@ -27,3 +36,9 @@ logging:
       oldtaoge:
         ossc:
           server: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

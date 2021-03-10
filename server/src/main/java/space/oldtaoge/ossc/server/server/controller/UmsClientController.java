@@ -6,15 +6,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import space.oldtaoge.ossc.server.commons.AbstractBaseController;
 import space.oldtaoge.ossc.server.commons.dto.AbstractBaseResult;
 import space.oldtaoge.ossc.server.commons.dto.BaseResultFactory;
+import space.oldtaoge.ossc.server.commons.dto.SuccessResult;
 import space.oldtaoge.ossc.server.server.entity.UmsClient;
 import space.oldtaoge.ossc.server.server.service.impl.UmsClientServiceImpl;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * <p>
@@ -41,5 +44,20 @@ public class UmsClientController extends AbstractBaseController {
         {
             return BaseResultFactory.getInstance().build(HttpStatus.BAD_REQUEST.value(), "Client Not Found", "需要已有的id", getLOG_LEVEL());
         }
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "login")
+    AbstractBaseResult conn(@RequestParam("cliId") String id, @RequestParam("password") String password, HttpServletRequest request) {
+        if (id != null && password != null) {
+            Map<String, Object> login = umsClientService.login(id, password);
+            if (login.get("code").equals(0)) {
+                return BaseResultFactory.getInstance().build(request.getRequestURI(), new SuccessResult.SuccessData("token", login));
+            }
+            else {
+                return BaseResultFactory.getInstance().build(HttpStatus.BAD_REQUEST.value(), "401 Bad Request", login.get("message").toString(), "DEBUG");
+            }
+
+        }
+        return BaseResultFactory.getInstance().build(HttpStatus.BAD_REQUEST.value(), "param error", "No Param cliId and password", "DEBUG");
     }
 }

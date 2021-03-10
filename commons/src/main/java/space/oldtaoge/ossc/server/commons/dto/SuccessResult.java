@@ -1,12 +1,16 @@
 package space.oldtaoge.ossc.server.commons.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Lists;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import space.oldtaoge.ossc.server.commons.AbstractBaseDomain;
 
 import java.util.List;
+import java.util.Map;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -47,6 +51,15 @@ public class SuccessResult<T extends AbstractBaseDomain> extends AbstractBaseRes
         }
 
         data.add(dataBean);
+    }
+
+    @Data
+    @EqualsAndHashCode(callSuper = true)
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class SuccessData extends AbstractBaseDomain {
+        private String type;
+        private Map<String, Object> attributes;
     }
 
 }
