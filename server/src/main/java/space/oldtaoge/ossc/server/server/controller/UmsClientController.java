@@ -1,14 +1,13 @@
 package space.oldtaoge.ossc.server.server.controller;
 
 
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import space.oldtaoge.ossc.server.commons.AbstractBaseController;
+import space.oldtaoge.ossc.server.commons.CodeStatus;
 import space.oldtaoge.ossc.server.commons.dto.AbstractBaseResult;
 import space.oldtaoge.ossc.server.commons.dto.BaseResultFactory;
 import space.oldtaoge.ossc.server.commons.dto.SuccessResult;
@@ -42,22 +41,22 @@ public class UmsClientController extends AbstractBaseController {
         }
         else
         {
-            return BaseResultFactory.getInstance().build(HttpStatus.BAD_REQUEST.value(), "Client Not Found", "需要已有的id", getLOG_LEVEL());
+            return BaseResultFactory.getInstance().build(CodeStatus.BadRequest, "Client Not Found", "需要已有的id", getLOG_LEVEL());
         }
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "login")
     AbstractBaseResult conn(@RequestParam("cliId") String id, @RequestParam("password") String password, HttpServletRequest request) {
         if (id != null && password != null) {
-            Map<String, Object> login = umsClientService.login(id, password);
-            if (login.get("code").equals(0)) {
-                return BaseResultFactory.getInstance().build(request.getRequestURI(), new SuccessResult.SuccessData("token", login));
+            Map<String, Object> loginStatus = umsClientService.login(id, password);
+            if (loginStatus.get("code").equals(CodeStatus.OK)) {
+                return BaseResultFactory.getInstance().build(request.getRequestURI(), new SuccessResult.SuccessData("token", loginStatus));
             }
             else {
-                return BaseResultFactory.getInstance().build(HttpStatus.BAD_REQUEST.value(), "401 Bad Request", login.get("message").toString(), "DEBUG");
+                return BaseResultFactory.getInstance().build(CodeStatus.BadRequest, "401 Bad Request", loginStatus.get("message").toString(), "DEBUG");
             }
 
         }
-        return BaseResultFactory.getInstance().build(HttpStatus.BAD_REQUEST.value(), "param error", "No Param cliId and password", "DEBUG");
+        return BaseResultFactory.getInstance().build(CodeStatus.BadRequest, "param error", "No Param cliId and password", "DEBUG");
     }
 }

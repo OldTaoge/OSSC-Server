@@ -149,7 +149,11 @@
             <artifactId>commons</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>space.oldtaoge.ossc.server</groupId>
+            <artifactId>business-oauth2</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
         <!-- Projects End -->
     </dependencies>
 

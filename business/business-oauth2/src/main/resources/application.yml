@@ -36,3 +36,11 @@ business:
     grant_type: password
     client_id: client
     client_secret: secret
+
+logging:
+  space:
+    oldtaoge:
+      ossc:
+        server:
+          business:
+            oauth2: INFO

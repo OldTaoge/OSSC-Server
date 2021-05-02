@@ -16,7 +16,6 @@
 
 package space.oldtaoge.ossc.server.business.oauth2.configure;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -26,6 +25,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 
+import javax.annotation.Resource;
+
 /**
  * 认证服务器
  * <p>
@@ -34,7 +35,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
  *
  * @author Lusifer
  * @version v1.0.0
- * @date 2019-07-29 13:27:21
  * @see space.oldtaoge.ossc.server.business.oauth2.configure
  *
  */
@@ -42,23 +42,23 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
-    @Autowired
+    @Resource
     private BCryptPasswordEncoder passwordEncoder;
 
     /**
      * 注入用于支持 password 模式
      */
-    @Autowired
+    @Resource
     private AuthenticationManager authenticationManager;
 
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         // 用于支持密码模式
         endpoints.authenticationManager(authenticationManager);
     }
 
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+    public void configure(AuthorizationServerSecurityConfigurer security) {
         security
                 // 允许客户端访问 /oauth/check_token 检查 token
                 .checkTokenAccess("isAuthenticated()")
@@ -67,8 +67,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     /**
      * 配置客户端
-     * @param clients
-     * @throws Exception
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {

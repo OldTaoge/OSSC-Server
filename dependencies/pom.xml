@@ -15,7 +15,7 @@
 		<mybatis-plus.version>3.4.1</mybatis-plus.version>
         <dubbo.version>2.7.8</dubbo.version>
         <nacos.version>1.4.1</nacos.version>
-        <ali-context.version>1.0.11</ali-context.version>
+        <ali-context.version>1.0.10</ali-context.version>
         <dubbo-actuator.version>2.7.8</dubbo-actuator.version>
 	</properties>
 
@@ -35,6 +35,7 @@
 
     <dependencyManagement>
         <dependencies>
+        <!-- Version Bump  -->
         <!-- Spring Boot Begin -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
