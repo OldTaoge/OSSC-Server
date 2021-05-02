@@ -22,6 +22,12 @@ public class UmsClient extends AbstractBaseDomain {
     private static final long serialVersionUID = 1L;
 
     /**
+     * 认证用UUID(虽然使用OAuth2认证)
+     */
+
+    private String uuid;
+
+    /**
      * 客户端名称(仅用作标识)
      */
     private String clientName;

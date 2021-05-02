@@ -10,13 +10,13 @@
 
 	<properties>
 		<java.version>11</java.version>
-		<spring-boot.version>2.4.2</spring-boot.version>
-		<hikaricp.version>4.0.1</hikaricp.version>
+		<spring-boot.version>2.2.13.RELEASE</spring-boot.version>
 		<mysql.version>8.0.23</mysql.version>
 		<mybatis-plus.version>3.4.1</mybatis-plus.version>
-		<jackson.version>2.12.1</jackson.version>
-		<guava.version>30.1-jre</guava.version>
-		<commons-lang3.version>3.11</commons-lang3.version>
+        <dubbo.version>2.7.8</dubbo.version>
+        <nacos.version>1.4.1</nacos.version>
+        <ali-context.version>1.0.10</ali-context.version>
+        <dubbo-actuator.version>2.7.8</dubbo-actuator.version>
 	</properties>
 
     <licenses>
@@ -35,6 +35,7 @@
 
     <dependencyManagement>
         <dependencies>
+        <!-- Version Bump  -->
         <!-- Spring Boot Begin -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -53,17 +54,57 @@
                 <version>${spring-boot.version}</version>
                 <scope>test</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-oauth2</artifactId>
+                <version>2.2.4.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>2.2.4.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>2.5.0.RELEASE</version>
+            </dependency>
         <!-- Spring Boot End -->
+
+        <!-- Apache Dubbo -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-registry-nacos</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.spring</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${ali-context.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-serialization-kryo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
 
 
 
         <!-- DataSource Begin -->
-            <dependency>
-                <groupId>com.zaxxer</groupId>
-                <artifactId>HikariCP</artifactId>
-                <version>${hikaricp.version}</version>
-            </dependency>
-
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-jdbc</artifactId>
@@ -112,31 +153,6 @@
 
 
         <!-- Commons Begin -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.ben-manes.caffeine</groupId>
-            <artifactId>guava</artifactId>
-             <version>${guava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
         <!-- Commons End -->
         </dependencies>
     </dependencyManagement>
