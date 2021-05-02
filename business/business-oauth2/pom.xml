@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>business-oauth2</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -95,7 +96,6 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>4.9.1</version>
         </dependency>
 
 

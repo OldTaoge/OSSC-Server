@@ -11,12 +11,8 @@
 	<properties>
 		<java.version>11</java.version>
 		<spring-boot.version>2.2.13.RELEASE</spring-boot.version>
-		<hikaricp.version>4.0.1</hikaricp.version>
 		<mysql.version>8.0.23</mysql.version>
 		<mybatis-plus.version>3.4.1</mybatis-plus.version>
-		<jackson.version>2.12.1</jackson.version>
-		<guava.version>30.1-jre</guava.version>
-		<commons-lang3.version>3.11</commons-lang3.version>
         <dubbo.version>2.7.8</dubbo.version>
         <nacos.version>1.4.1</nacos.version>
         <ali-context.version>1.0.11</ali-context.version>
@@ -109,12 +105,6 @@
 
         <!-- DataSource Begin -->
             <dependency>
-                <groupId>com.zaxxer</groupId>
-                <artifactId>HikariCP</artifactId>
-                <version>${hikaricp.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-jdbc</artifactId>
                 <version>${spring-boot.version}</version>
@@ -162,36 +152,6 @@
 
 
         <!-- Commons Begin -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.ben-manes.caffeine</groupId>
-            <artifactId>guava</artifactId>
-             <version>${guava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>4.9.1</version>
-        </dependency>
         <!-- Commons End -->
         </dependencies>
     </dependencyManagement>

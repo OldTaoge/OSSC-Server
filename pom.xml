@@ -14,7 +14,7 @@
     <artifactId>parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <url>http://oldtaoge.space</url>
+    <url>https://oldtaoge.space</url>
 
     <modules>
         <module>dependencies</module>

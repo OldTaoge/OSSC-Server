@@ -10,7 +10,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>space.oldtaoge.ossc.server</groupId>
     <artifactId>business</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
