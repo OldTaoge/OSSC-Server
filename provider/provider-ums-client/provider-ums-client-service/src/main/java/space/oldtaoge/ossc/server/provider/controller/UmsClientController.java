@@ -30,20 +30,23 @@ public class UmsClientController extends AbstractBaseController {
     @Resource
     UmsClientServiceImpl umsClientService;
 
+    @Resource
+    HttpServletRequest request;
+
     @RequestMapping(method = RequestMethod.GET, path = "{id}")
-    AbstractBaseResult getById(@PathVariable(name = "id") Long id, HttpServletRequest request) {
+    AbstractBaseResult getById(@PathVariable(name = "id") Long id) {
         UmsClient umsClient = umsClientService.getById(id);
         if (umsClient != null) {
             return BaseResultFactory.getInstance().build(request.getRequestURI(), umsClient);
         }
         else
         {
-            return BaseResultFactory.getInstance().build(CodeStatus.BadRequest, "Client Not Found", "需要已有的id", getLOG_LEVEL());
+            return BaseResultFactory.getInstance().build(CodeStatus.BadRequest, "Client Not Found", "需要已有的id", null);
         }
     }
 
 //    @RequestMapping(method = RequestMethod.POST, path = "login")
-//    AbstractBaseResult conn(@RequestParam("cliId") String id, @RequestParam("password") String password, HttpServletRequest request) {
+//    AbstractBaseResult conn(@RequestParam("cliId") String id, @RequestParam("password") String password) {
 //        if (id != null && password != null) {
 //            Map<String, Object> loginStatus = umsClientService.login(id, password);
 //            if (loginStatus.get("code").equals(CodeStatus.OK)) {

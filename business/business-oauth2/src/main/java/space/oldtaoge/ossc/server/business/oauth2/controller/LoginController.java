@@ -1,6 +1,7 @@
 package space.oldtaoge.ossc.server.business.oauth2.controller;
 
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,11 +37,13 @@ import java.util.Map;
  * @version v1.0.0
  * @see space.oldtaoge.ossc.server.business.oauth2.controller
  */
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class LoginController {
     @Resource
     private LoginService loginService;
+
+    @Resource
+    HttpServletRequest request;
 
     @Resource
     private BCryptPasswordEncoder passwordEncoder;
@@ -58,11 +60,10 @@ public class LoginController {
     /**
      * 登录Restful版
      * @param loginParam 登录参数
-     * @param request 自动填充
      * @return Restful Result
      */
     @PostMapping(value = "/user/login")
-    public AbstractBaseResult login(@RequestBody LoginParam loginParam, HttpServletRequest request) {
+    public AbstractBaseResult login(@RequestBody LoginParam loginParam) {
 
         // 验证密码是否正确
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginParam.getUsername());
@@ -82,10 +83,11 @@ public class LoginController {
      * 获取用户信息
      *
      */
+    @PreAuthorize("hasAuthority('CLI')")
     @GetMapping(value = "/user/info")
-    public AbstractBaseResult info(HttpServletRequest request) {
+    public AbstractBaseResult info() {
         // 获取 token
-        String token = request.getParameter("access_token");
+//        String token = request.getParameter("access_token");
         // 获取认证信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -104,8 +106,9 @@ public class LoginController {
     /**
      * 注销
      */
+    @PreAuthorize("hasAuthority('CLI')")
     @PostMapping(value = "/user/logout")
-    public AbstractBaseResult logout(HttpServletRequest request) {
+    public AbstractBaseResult logout() {
         // 获取 token
         String token = request.getParameter("access_token");
         if (token == null) {
