@@ -1,11 +1,11 @@
-package space.oldtaoge.ossc.server.server.entity;
-
-import java.time.LocalDateTime;
+package space.oldtaoge.ossc.server.provider.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import space.oldtaoge.ossc.server.commons.AbstractBaseDomain;
+
+import java.time.LocalDateTime;
 
 /**
  * <p>

@@ -1,6 +1,6 @@
-package space.oldtaoge.ossc.server.server.service;
+package space.oldtaoge.ossc.server.provider.service;
 
-import space.oldtaoge.ossc.server.server.entity.UmsClient;
+import space.oldtaoge.ossc.server.provider.entity.UmsClient;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -12,5 +12,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-02-07
  */
 public interface IUmsClientService extends IService<UmsClient> {
+    UmsClient getByUUID(String u);
 
 }

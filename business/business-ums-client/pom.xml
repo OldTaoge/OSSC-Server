@@ -6,17 +6,17 @@
 
     <parent>
         <groupId>space.oldtaoge.ossc.server</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>business</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>business</artifactId>
+    <artifactId>business-ums-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>business-oauth2</module>
-        <module>business-ums-client</module>
+        <module>business-ums-client-service</module>
+        <module>business-ums-client-dubbo</module>
     </modules>
 
     <properties>
@@ -41,17 +41,4 @@
         </developer>
     </developers>
 
-    <dependencies>
-        <!-- Projects Begin -->
-        <dependency>
-            <groupId>space.oldtaoge.ossc.server</groupId>
-            <artifactId>commons</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <!-- Projects End -->
-    </dependencies>
-
-
-    
 </project>

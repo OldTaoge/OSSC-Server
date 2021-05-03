@@ -1,5 +1,6 @@
 package space.oldtaoge.ossc.server.business.oauth2.controller;
 
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,10 +19,11 @@ import space.oldtaoge.ossc.server.commons.CodeStatus;
 import space.oldtaoge.ossc.server.commons.dto.AbstractBaseResult;
 import space.oldtaoge.ossc.server.commons.dto.BaseResultFactory;
 import space.oldtaoge.ossc.server.commons.dto.SuccessResult;
+import space.oldtaoge.ossc.server.provider.entity.UmsClient;
+import space.oldtaoge.ossc.server.provider.service.IUmsClientService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,13 +44,16 @@ public class LoginController {
     private LoginService loginService;
 
     @Resource
-    public BCryptPasswordEncoder passwordEncoder;
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Resource(name = "userDetailsServiceBean")
-    public UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService;
+
+    @DubboReference
+    private IUmsClientService umsClientService;
 
     @Resource
-    public TokenStore tokenStore;
+    private TokenStore tokenStore;
 
     /**
      * 登录Restful版
@@ -78,20 +83,22 @@ public class LoginController {
      *
      */
     @GetMapping(value = "/user/info")
-    public Serializable info(HttpServletRequest request) {
+    public AbstractBaseResult info(HttpServletRequest request) {
         // 获取 token
         String token = request.getParameter("access_token");
         // 获取认证信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
+
+        UmsClient umsclient = umsClientService.getByUUID(authentication.getName());
         // 封装并返回结果
 //        LoginInfo loginInfo = new LoginInfo();
 //        loginInfo.setName(authentication.getName());
 //        loginInfo.setAvatar("");
 //        loginInfo.setToken(token);
 //        return new ResponseResult<LoginInfo>(ResponseResult.CodeStatus.OK, "获取用户信息", loginInfo);
-//        return BaseResultFactory.getInstance().build(request.getRequestURI(), new SuccessResult<AbstractBaseDomain>(request.getRequestURI(), authentication));
-        return authentication;
+        return BaseResultFactory.getInstance().build(request.getRequestURI(), umsclient);
+//        return umsclient;
     }
 
     /**

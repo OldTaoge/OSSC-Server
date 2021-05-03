@@ -6,26 +6,13 @@
 
     <parent>
         <groupId>space.oldtaoge.ossc.server</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>provider-ums-client</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>business</artifactId>
+    <artifactId>provider-ums-client-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>business-oauth2</module>
-        <module>business-ums-client</module>
-    </modules>
-
-    <properties>
-        <java.version>11</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    </properties>
+    <packaging>jar</packaging>
 
     <licenses>
         <license>
@@ -42,16 +29,21 @@
     </developers>
 
     <dependencies>
-        <!-- Projects Begin -->
         <dependency>
-            <groupId>space.oldtaoge.ossc.server</groupId>
-            <artifactId>commons</artifactId>
-            <version>${project.parent.version}</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- DataSource Begin -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+        <!-- DataSource End -->
 
-        <!-- Projects End -->
     </dependencies>
-
-
-    
 </project>

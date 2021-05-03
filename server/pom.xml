@@ -154,7 +154,11 @@
             <artifactId>business-oauth2</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-        <!-- Projects End -->
+        <dependency>
+            <groupId>space.oldtaoge.ossc.server</groupId>
+            <artifactId>provider-ums-client-service</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency><!-- Projects End -->
     </dependencies>
 
 

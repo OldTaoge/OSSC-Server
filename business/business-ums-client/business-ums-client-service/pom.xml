@@ -9,7 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>business-oauth2</artifactId>
+    <artifactId>business-ums-client-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -119,17 +119,11 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-
-
-        <!-- Project Begin-->
         <dependency>
             <groupId>space.oldtaoge.ossc.server</groupId>
-            <artifactId>provider-ums-client-service</artifactId>
-            <version>${project.parent.version}</version>
+            <artifactId>business-ums-client-dubbo</artifactId>
+            <version>${project.version}</version>
         </dependency>
-
-        <!-- Project End-->
-
 
     </dependencies>
 
@@ -139,7 +133,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>space.oldtaoge.ossc.server.business.oauth2.BusinessOAuth2Application</mainClass>
+                    <mainClass>space.oldtaoge.ossc.server.business.oauth2.BusinessOUmsClientServiceApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
