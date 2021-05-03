@@ -44,6 +44,9 @@ public class LoginController {
     private LoginService loginService;
 
     @Resource
+    HttpServletRequest request;
+
+    @Resource
     private BCryptPasswordEncoder passwordEncoder;
 
     @Resource(name = "userDetailsServiceBean")
@@ -58,11 +61,10 @@ public class LoginController {
     /**
      * 登录Restful版
      * @param loginParam 登录参数
-     * @param request 自动填充
      * @return Restful Result
      */
     @PostMapping(value = "/user/login")
-    public AbstractBaseResult login(@RequestBody LoginParam loginParam, HttpServletRequest request) {
+    public AbstractBaseResult login(@RequestBody LoginParam loginParam) {
 
         // 验证密码是否正确
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginParam.getUsername());
@@ -83,9 +85,9 @@ public class LoginController {
      *
      */
     @GetMapping(value = "/user/info")
-    public AbstractBaseResult info(HttpServletRequest request) {
+    public AbstractBaseResult info() {
         // 获取 token
-        String token = request.getParameter("access_token");
+//        String token = request.getParameter("access_token");
         // 获取认证信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -105,7 +107,7 @@ public class LoginController {
      * 注销
      */
     @PostMapping(value = "/user/logout")
-    public AbstractBaseResult logout(HttpServletRequest request) {
+    public AbstractBaseResult logout() {
         // 获取 token
         String token = request.getParameter("access_token");
         if (token == null) {
