@@ -69,11 +69,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.exceptionHandling()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests()
+/*        http.authorizeRequests()
 //                .antMatchers("/user/login").permitAll()
                 .antMatchers("/user/info").hasRole("USER")
                 .antMatchers("/user/logout").hasRole("USER")
-                .anyRequest().authenticated();
+                .anyRequest().authenticated();*/
         http.csrf().disable();
     }
 }

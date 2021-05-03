@@ -1,6 +1,7 @@
 package space.oldtaoge.ossc.server.business.oauth2.controller;
 
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,7 +37,6 @@ import java.util.Map;
  * @version v1.0.0
  * @see space.oldtaoge.ossc.server.business.oauth2.controller
  */
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class LoginController {
     @Resource
@@ -84,6 +83,7 @@ public class LoginController {
      * 获取用户信息
      *
      */
+    @PreAuthorize("hasAuthority('CLI')")
     @GetMapping(value = "/user/info")
     public AbstractBaseResult info() {
         // 获取 token
@@ -106,6 +106,7 @@ public class LoginController {
     /**
      * 注销
      */
+    @PreAuthorize("hasAuthority('CLI')")
     @PostMapping(value = "/user/logout")
     public AbstractBaseResult logout() {
         // 获取 token

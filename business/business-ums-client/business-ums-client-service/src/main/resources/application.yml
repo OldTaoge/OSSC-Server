@@ -1,3 +1,14 @@
+base:
+  config:
+    mysql:
+      hostname: mysql.lan
+      port: 3306
+      username: ossc
+      password: ossc
+    nacos:
+      hostname: nacos.sca.oldtaoge.space
+      port: 8848
+
 spring:
   application:
     name: BusinessUmsClientService
@@ -24,13 +35,15 @@ security:
       token-info-uri: http://localhost:9001/oauth/check_token
 
 dubbo:
+  scan:
+    base-packages: space.oldtaoge.ossc.server.business.oauth2.controller
   protocol:
     name: dubbo
     port: -1
     serialization: kryo
   registry:
-    address: nacos://nacos.sca.oldtaoge.space
-    port: 8848
+    address: nacos://${base.config.nacos.hostname}
+    port: ${base.config.nacos.port}
 
 management:
   endpoints:
