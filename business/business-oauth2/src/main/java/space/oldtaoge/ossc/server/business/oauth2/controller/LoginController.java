@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import space.oldtaoge.ossc.server.business.oauth2.dto.LoginParam;
 import space.oldtaoge.ossc.server.business.oauth2.service.LoginService;
@@ -38,6 +39,7 @@ import java.util.Map;
  * @see space.oldtaoge.ossc.server.business.oauth2.controller
  */
 @RestController
+@RequestMapping("user")
 public class LoginController {
     @Resource
     private LoginService loginService;
@@ -62,7 +64,7 @@ public class LoginController {
      * @param loginParam 登录参数
      * @return Restful Result
      */
-    @PostMapping(value = "/user/login")
+    @PostMapping(value = "login")
     public AbstractBaseResult login(@RequestBody LoginParam loginParam) {
 
         // 验证密码是否正确
@@ -84,7 +86,7 @@ public class LoginController {
      *
      */
     @PreAuthorize("hasAuthority('CLI')")
-    @GetMapping(value = "/user/info")
+    @GetMapping(value = "info")
     public AbstractBaseResult info() {
         // 获取 token
 //        String token = request.getParameter("access_token");
@@ -107,7 +109,7 @@ public class LoginController {
      * 注销
      */
     @PreAuthorize("hasAuthority('CLI')")
-    @PostMapping(value = "/user/logout")
+    @PostMapping(value = "logout")
     public AbstractBaseResult logout() {
         // 获取 token
         String token = request.getParameter("access_token");
@@ -116,6 +118,9 @@ public class LoginController {
         }
         // 删除 token 以注销
         OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(token);
+        if (oAuth2AccessToken == null) {
+            return BaseResultFactory.getInstance().build(CodeStatus.BadRequest, "token已过期", null, null);
+        }
         tokenStore.removeAccessToken(oAuth2AccessToken);
         return BaseResultFactory.getInstance().build(CodeStatus.OK, "已注销", null, null);
     }

@@ -4,6 +4,7 @@ import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import space.oldtaoge.ossc.server.business.oauth2.UmsClientDubbo;
 import space.oldtaoge.ossc.server.commons.CodeStatus;
@@ -16,7 +17,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 @DubboService
-@RestController(value = "clients")
+@RestController
+@RequestMapping("clients")
 public class UmsClientController implements UmsClientDubbo {
 
     @DubboReference
