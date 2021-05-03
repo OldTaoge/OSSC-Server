@@ -1,19 +1,13 @@
-package space.oldtaoge.ossc.server.server.service.impl;
+package space.oldtaoge.ossc.server.provider.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import lombok.val;
-import org.apache.dubbo.config.annotation.DubboReference;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Service;
-import space.oldtaoge.ossc.server.business.oauth2.dto.LoginParam;
-import space.oldtaoge.ossc.server.business.oauth2.service.LoginService;
-import space.oldtaoge.ossc.server.commons.CodeStatus;
-import space.oldtaoge.ossc.server.server.entity.UmsClient;
-import space.oldtaoge.ossc.server.server.mapper.UmsClientMapper;
-import space.oldtaoge.ossc.server.server.service.IUmsClientService;
+import space.oldtaoge.ossc.server.provider.entity.UmsClient;
+import space.oldtaoge.ossc.server.provider.mapper.UmsClientMapper;
 
-import javax.annotation.Nonnull;
-import java.util.HashMap;
-import java.util.Map;
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -24,8 +18,17 @@ import java.util.Map;
  * @since 2021-02-07
  */
 @Service
+@DubboService
 public class UmsClientServiceImpl extends ServiceImpl<UmsClientMapper, UmsClient> implements IUmsClientService {
-    @DubboReference
+    @Resource
+    UmsClientMapper umsClientMapper;
+    @Override
+    public UmsClient getByUUID(String u) {
+        QueryWrapper<UmsClient> wrapper =  new QueryWrapper<>();
+        wrapper.eq("uuid", u);
+        return umsClientMapper.selectOne(wrapper);
+    }
+    /*@DubboReference
     LoginService loginService;
 
     @Nonnull
@@ -50,5 +53,5 @@ public class UmsClientServiceImpl extends ServiceImpl<UmsClientMapper, UmsClient
         return resultMap;
 
     }
-
+*/
 }

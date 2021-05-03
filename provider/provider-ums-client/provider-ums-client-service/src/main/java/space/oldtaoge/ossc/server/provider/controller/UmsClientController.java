@@ -1,22 +1,19 @@
-package space.oldtaoge.ossc.server.server.controller;
+package space.oldtaoge.ossc.server.provider.controller;
 
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import space.oldtaoge.ossc.server.commons.AbstractBaseController;
 import space.oldtaoge.ossc.server.commons.CodeStatus;
 import space.oldtaoge.ossc.server.commons.dto.AbstractBaseResult;
 import space.oldtaoge.ossc.server.commons.dto.BaseResultFactory;
-import space.oldtaoge.ossc.server.commons.dto.SuccessResult;
-import space.oldtaoge.ossc.server.server.entity.UmsClient;
-import space.oldtaoge.ossc.server.server.service.impl.UmsClientServiceImpl;
+import space.oldtaoge.ossc.server.provider.entity.UmsClient;
+import space.oldtaoge.ossc.server.provider.service.UmsClientServiceImpl;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 /**
  * <p>
@@ -45,18 +42,18 @@ public class UmsClientController extends AbstractBaseController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "login")
-    AbstractBaseResult conn(@RequestParam("cliId") String id, @RequestParam("password") String password, HttpServletRequest request) {
-        if (id != null && password != null) {
-            Map<String, Object> loginStatus = umsClientService.login(id, password);
-            if (loginStatus.get("code").equals(CodeStatus.OK)) {
-                return BaseResultFactory.getInstance().build(request.getRequestURI(), new SuccessResult.SuccessData("token", loginStatus));
-            }
-            else {
-                return BaseResultFactory.getInstance().build(CodeStatus.BadRequest, "401 Bad Request", loginStatus.get("message").toString(), "DEBUG");
-            }
-
-        }
-        return BaseResultFactory.getInstance().build(CodeStatus.BadRequest, "param error", "No Param cliId and password", "DEBUG");
-    }
+//    @RequestMapping(method = RequestMethod.POST, path = "login")
+//    AbstractBaseResult conn(@RequestParam("cliId") String id, @RequestParam("password") String password, HttpServletRequest request) {
+//        if (id != null && password != null) {
+//            Map<String, Object> loginStatus = umsClientService.login(id, password);
+//            if (loginStatus.get("code").equals(CodeStatus.OK)) {
+//                return BaseResultFactory.getInstance().build(request.getRequestURI(), new SuccessResult.SuccessData("token", loginStatus));
+//            }
+//            else {
+//                return BaseResultFactory.getInstance().build(CodeStatus.BadRequest, "401 Bad Request", loginStatus.get("message").toString(), "DEBUG");
+//            }
+//
+//        }
+//        return BaseResultFactory.getInstance().build(CodeStatus.BadRequest, "param error", "No Param cliId and password", "DEBUG");
+//    }
 }

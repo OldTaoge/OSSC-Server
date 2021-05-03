@@ -1,6 +1,5 @@
 package space.oldtaoge.ossc.server.commons.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import lombok.Data;

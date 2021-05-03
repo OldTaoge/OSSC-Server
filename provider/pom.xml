@@ -10,13 +10,12 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>business</artifactId>
+    <artifactId>provider</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>business-oauth2</module>
-        <module>business-ums-client</module>
+        <module>provider-ums-client</module>
     </modules>
 
     <properties>
@@ -48,10 +47,9 @@
             <artifactId>commons</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-
         <!-- Projects End -->
     </dependencies>
 
 
-    
+
 </project>
