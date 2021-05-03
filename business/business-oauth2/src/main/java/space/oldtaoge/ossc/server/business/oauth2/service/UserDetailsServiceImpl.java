@@ -39,7 +39,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         UmsClient umsClient = umsClientService.getByUUID(s);
         if (umsClient != null) {
             List<GrantedAuthority> grantedAuthorities = Lists.newArrayList();
-            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("USER");
+            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("CLI");
             grantedAuthorities.add(grantedAuthority);
             return new User(umsClient.getUuid(), umsClient.getPassword(), grantedAuthorities);
         }

@@ -18,7 +18,6 @@
 
     <modules>
         <module>dependencies</module>
-        <module>server</module>
         <module>commons</module>
         <module>business</module>
         <module>provider</module>
