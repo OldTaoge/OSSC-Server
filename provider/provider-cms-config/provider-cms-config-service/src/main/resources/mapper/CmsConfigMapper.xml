@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="space.oldtaoge.ossc.server.provider.mapper.CmsConfigMapper">
+<select id="selectListByCliIdPages" parameterType="java.lang.Long"  resultType="space.oldtaoge.ossc.server.provider.entity.CmsConfigLess">
+    SELECT cc.id, cc.name, cc.last_modify FROM `cms_config` AS cc
+    LEFT JOIN `fk_ums_client_cms_config` fuccc on cc.id = fuccc.config_id
+    LEFT JOIN `ums_client` uc on fuccc.client_id = uc.id
+    WHERE uc.id = ${value}
+</select>
+</mapper>
