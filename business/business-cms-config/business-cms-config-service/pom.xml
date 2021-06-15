@@ -5,11 +5,11 @@
 
     <parent>
         <groupId>space.oldtaoge.ossc.server</groupId>
-        <artifactId>business-ums-client</artifactId>
+        <artifactId>business-cms-config</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>business-ums-client-service</artifactId>
+    <artifactId>business-cms-config-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -82,12 +82,12 @@
 
         <dependency>
             <groupId>space.oldtaoge.ossc.server</groupId>
-            <artifactId>business-ums-client-dubbo</artifactId>
+            <artifactId>business-cms-config-dubbo</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>space.oldtaoge.ossc.server</groupId>
-            <artifactId>provider-ums-client-api</artifactId>
+            <artifactId>provider-cms-config-api</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
@@ -98,7 +98,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>space.oldtaoge.ossc.server.business.ums.client.BusinessOUmsClientServiceApplication</mainClass>
+                    <mainClass>space.oldtaoge.ossc.server.business.cms.config.BusinessOUmsClientServiceApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

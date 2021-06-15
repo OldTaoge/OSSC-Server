@@ -1,11 +1,11 @@
-package space.oldtaoge.ossc.server.business.oauth2;
+package space.oldtaoge.ossc.server.business.ums.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BusinessOUmsClientServiceApplication {
+public class BusinessUmsClientServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(BusinessOUmsClientServiceApplication.class, args);
+        SpringApplication.run(BusinessUmsClientServiceApplication.class, args);
     }
 }

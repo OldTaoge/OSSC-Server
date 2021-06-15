@@ -1,4 +1,4 @@
-package space.oldtaoge.ossc.server.business.oauth2.configure;
+package space.oldtaoge.ossc.server.business.ums.client.configure;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

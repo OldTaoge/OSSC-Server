@@ -10,13 +10,13 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>business-ums-client</artifactId>
+    <artifactId>business-cms-config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>business-ums-client-service</module>
-        <module>business-ums-client-dubbo</module>
+        <module>business-cms-config-service</module>
+        <module>business-cms-config-dubbo</module>
     </modules>
 
 </project>

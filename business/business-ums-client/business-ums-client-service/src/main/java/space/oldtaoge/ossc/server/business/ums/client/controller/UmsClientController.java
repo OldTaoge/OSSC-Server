@@ -1,4 +1,4 @@
-package space.oldtaoge.ossc.server.business.oauth2.controller;
+package space.oldtaoge.ossc.server.business.ums.client.controller;
 
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @DubboService
 @RestController
-@RequestMapping("clients")
+@RequestMapping("client")
 public class UmsClientController implements UmsClientDubbo {
 
     @DubboReference

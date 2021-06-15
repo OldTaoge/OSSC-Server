@@ -31,9 +31,10 @@ public class BaseResultFactory<T extends AbstractBaseDomain> {
     }
 
 
-    public AbstractBaseResult build(String self, int next, int last, List<T> attributes) {
-        return new SuccessResult<>(self, next, last, attributes);
+    public AbstractBaseResult build(String self, Long current, Long length, Long total, List<? extends T> attributes) {
+        return new SuccessResult<T>(self, current, length, total, "", attributes);
     }
+
 
 
     public AbstractBaseResult build(int code, String title, String detail, String level) {

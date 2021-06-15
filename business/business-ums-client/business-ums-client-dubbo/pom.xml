@@ -21,20 +21,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
-    <licenses>
-        <license>
-            <url>https://raw.githubusercontent.com/OldTaoge/OSSC-Server/main/LICENSE</url>
-        </license>
-    </licenses>
-
-    <developers>
-        <developer>
-            <id>oldtaoge</id>
-            <name>OldTaoge</name>
-            <email>admin@oldtaoge.space</email>
-        </developer>
-    </developers>
-
     <dependencies>
         <!-- Spring Boot Begin -->
         <dependency>
