@@ -16,6 +16,8 @@
 
     <modules>
         <module>provider-ums-client</module>
+        <module>provider-cms-config</module>
+        <module>provider-generator</module>
     </modules>
 
     <properties>
@@ -26,20 +28,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
-    <licenses>
-        <license>
-            <url>https://raw.githubusercontent.com/OldTaoge/OSSC-Server/main/LICENSE</url>
-        </license>
-    </licenses>
-
-    <developers>
-        <developer>
-            <id>oldtaoge</id>
-            <name>OldTaoge</name>
-            <email>admin@oldtaoge.space</email>
-        </developer>
-    </developers>
-
     <dependencies>
         <!-- Projects Begin -->
         <dependency>
@@ -48,6 +36,22 @@
             <version>${project.parent.version}</version>
         </dependency>
         <!-- Projects End -->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- DataSource Begin -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-extension</artifactId>
+        </dependency>
+        <!-- DataSource End -->
     </dependencies>
 
 

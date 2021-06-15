@@ -5,18 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>space.oldtaoge.ossc.server</groupId>
         <artifactId>provider</artifactId>
+        <groupId>space.oldtaoge.ossc.server</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>provider-ums-client</artifactId>
+    <artifactId>provider-cms-config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>provider-ums-client-api</module>
-        <module>provider-ums-client-service</module>
+        <module>provider-cms-config-api</module>
+        <module>provider-cms-config-service</module>
     </modules>
 
     <properties>
