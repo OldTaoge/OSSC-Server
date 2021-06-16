@@ -8,7 +8,6 @@ base:
     nacos:
       hostname: nacos.sca.oldtaoge.space
       port: 8848
-
 spring:
   application:
     name: ProviderUmsClientService
@@ -54,3 +53,6 @@ management:
     web:
       exposure:
         include: "*"
+
+server:
+  port: 9000

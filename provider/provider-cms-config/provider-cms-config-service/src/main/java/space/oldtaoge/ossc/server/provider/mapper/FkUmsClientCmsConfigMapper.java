@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2021-06-15
  */
 public interface FkUmsClientCmsConfigMapper extends BaseMapper<FkUmsClientCmsConfig> {
-
+    int checkHasPer(Long cliId, Long confId);
 }

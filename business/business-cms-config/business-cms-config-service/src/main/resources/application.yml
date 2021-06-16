@@ -8,6 +8,9 @@ base:
     nacos:
       hostname: nacos.sca.oldtaoge.space
       port: 8848
+    oauth2:
+      hostname: localhost
+      port: 8317
 
 spring:
   application:
@@ -22,17 +25,17 @@ spring:
       discovery:
         server-addr: nacos.sca.oldtaoge.space:8848
 server:
-  port: 9002
+  port: 9004
 
 security:
   oauth2:
     client:
       client-id: client
       client-secret: 123456
-      access-token-uri: http://localhost:9001/oauth/token
-      user-authorization-uri: http://localhost:9001/oauth/authorize
+      access-token-uri: http://${base.config.oauth2.hostname}:${base.config.oauth2.port}/oauth/token
+      user-authorization-uri: http://${base.config.oauth2.hostname}:${base.config.oauth2.port}/oauth/authorize
     resource:
-      token-info-uri: http://localhost:9001/oauth/check_token
+      token-info-uri: http://${base.config.oauth2.hostname}:${base.config.oauth2.port}/oauth/check_token
 
 dubbo:
   scan:

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import space.oldtaoge.ossc.server.provider.entity.FkUmsClientCmsConfig;
 import space.oldtaoge.ossc.server.provider.mapper.FkUmsClientCmsConfigMapper;
 
+import javax.annotation.Resource;
+
 /**
  * <p>
  *  服务实现类
@@ -17,5 +19,10 @@ import space.oldtaoge.ossc.server.provider.mapper.FkUmsClientCmsConfigMapper;
 @Service
 @DubboService
 public class FkUmsClientCmsConfigServiceImpl extends ServiceImpl<FkUmsClientCmsConfigMapper, FkUmsClientCmsConfig> implements IFkUmsClientCmsConfigService {
-
+    @Resource
+    FkUmsClientCmsConfigMapper mapper;
+    @Override
+    public int checkHasPer(Long cliId, Long confId) {
+        return mapper.checkHasPer(cliId, confId);
+    }
 }

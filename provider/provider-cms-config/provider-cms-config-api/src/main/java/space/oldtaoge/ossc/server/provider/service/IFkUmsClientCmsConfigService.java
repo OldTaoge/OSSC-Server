@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-06-15
  */
 public interface IFkUmsClientCmsConfigService extends IService<FkUmsClientCmsConfig> {
-
+    int checkHasPer(Long cliId, Long confId);
 }
