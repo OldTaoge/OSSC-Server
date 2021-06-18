@@ -1,4 +1,4 @@
-package space.oldtaoge.ossc.server.provider.entity;
+package space.oldtaoge.ossc.server.provider.cms.config.entity;
 
 import space.oldtaoge.ossc.server.commons.AbstractBaseDomain;
 import lombok.Data;

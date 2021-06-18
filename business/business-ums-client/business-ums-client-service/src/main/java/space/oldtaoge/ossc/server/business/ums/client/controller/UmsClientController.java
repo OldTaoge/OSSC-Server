@@ -10,8 +10,8 @@ import space.oldtaoge.ossc.server.business.ums.client.UmsClientDubbo;
 import space.oldtaoge.ossc.server.commons.CodeStatus;
 import space.oldtaoge.ossc.server.commons.dto.AbstractBaseResult;
 import space.oldtaoge.ossc.server.commons.dto.BaseResultFactory;
-import space.oldtaoge.ossc.server.provider.entity.UmsClient;
-import space.oldtaoge.ossc.server.provider.service.IUmsClientService;
+import space.oldtaoge.ossc.server.provider.ums.client.entity.UmsClient;
+import space.oldtaoge.ossc.server.provider.ums.client.entity.service.IUmsClientService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;

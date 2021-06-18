@@ -1,14 +1,14 @@
-package space.oldtaoge.ossc.server.provider.entity;
+package space.oldtaoge.ossc.server.provider.cms.config.entity;
 
-import space.oldtaoge.ossc.server.commons.AbstractBaseDomain;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import space.oldtaoge.ossc.server.commons.AbstractBaseDomain;
 
 import java.sql.Timestamp;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author OldTaoge
@@ -16,7 +16,7 @@ import java.sql.Timestamp;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class CmsConfig extends AbstractBaseDomain {
+public class CmsConfigLess extends AbstractBaseDomain {
 
     private static final long serialVersionUID = 1L;
 
@@ -24,12 +24,6 @@ public class CmsConfig extends AbstractBaseDomain {
      * 配置文件名称
      */
     private String name;
-
-    /**
-     * 内容
-     */
-    private String content;
-
 
     /**
      * 最后修改

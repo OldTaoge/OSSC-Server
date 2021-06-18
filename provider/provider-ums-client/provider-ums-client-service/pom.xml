@@ -112,7 +112,7 @@
         <dependency>
             <groupId>space.oldtaoge.ossc.server</groupId>
             <artifactId>provider-ums-client-api</artifactId>
-            <version>${parent.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
 

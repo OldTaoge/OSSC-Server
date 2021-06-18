@@ -6,9 +6,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Service;
 import space.oldtaoge.ossc.server.provider.cms.config.mapper.CmsConfigMapper;
-import space.oldtaoge.ossc.server.provider.entity.CmsConfig;
-import space.oldtaoge.ossc.server.provider.entity.CmsConfigLess;
-import space.oldtaoge.ossc.server.provider.service.ICmsConfigService;
+import space.oldtaoge.ossc.server.provider.cms.config.entity.CmsConfig;
+import space.oldtaoge.ossc.server.provider.cms.config.entity.CmsConfigLess;
 
 import javax.annotation.Resource;
 import java.io.Serializable;

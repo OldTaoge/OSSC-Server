@@ -4,8 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Service;
 import space.oldtaoge.ossc.server.provider.cms.config.mapper.FkUmsClientCmsConfigMapper;
-import space.oldtaoge.ossc.server.provider.entity.FkUmsClientCmsConfig;
-import space.oldtaoge.ossc.server.provider.service.IFkUmsClientCmsConfigService;
+import space.oldtaoge.ossc.server.provider.cms.config.entity.FkUmsClientCmsConfig;
 
 import javax.annotation.Resource;
 

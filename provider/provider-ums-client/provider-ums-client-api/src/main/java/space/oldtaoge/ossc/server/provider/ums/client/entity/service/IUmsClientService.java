@@ -1,7 +1,7 @@
-package space.oldtaoge.ossc.server.provider.service;
+package space.oldtaoge.ossc.server.provider.ums.client.entity.service;
 
-import space.oldtaoge.ossc.server.provider.entity.UmsClient;
 import com.baomidou.mybatisplus.extension.service.IService;
+import space.oldtaoge.ossc.server.provider.ums.client.entity.UmsClient;
 
 /**
  * <p>

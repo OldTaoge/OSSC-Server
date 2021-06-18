@@ -1,7 +1,7 @@
 package space.oldtaoge.ossc.server.provider.ums.client.mapper;
 
-import space.oldtaoge.ossc.server.provider.entity.UmsClient;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import space.oldtaoge.ossc.server.provider.ums.client.entity.UmsClient;
 
 /**
  * <p>

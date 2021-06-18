@@ -14,11 +14,11 @@ import space.oldtaoge.ossc.server.business.CmsConfigDubbo;
 import space.oldtaoge.ossc.server.commons.CodeStatus;
 import space.oldtaoge.ossc.server.commons.dto.AbstractBaseResult;
 import space.oldtaoge.ossc.server.commons.dto.BaseResultFactory;
-import space.oldtaoge.ossc.server.provider.entity.CmsConfigLess;
-import space.oldtaoge.ossc.server.provider.entity.UmsClient;
-import space.oldtaoge.ossc.server.provider.service.ICmsConfigService;
-import space.oldtaoge.ossc.server.provider.service.IFkUmsClientCmsConfigService;
-import space.oldtaoge.ossc.server.provider.service.IUmsClientService;
+import space.oldtaoge.ossc.server.provider.cms.config.entity.CmsConfigLess;
+import space.oldtaoge.ossc.server.provider.cms.config.service.ICmsConfigService;
+import space.oldtaoge.ossc.server.provider.cms.config.service.IFkUmsClientCmsConfigService;
+import space.oldtaoge.ossc.server.provider.ums.client.entity.UmsClient;
+import space.oldtaoge.ossc.server.provider.ums.client.entity.service.IUmsClientService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;

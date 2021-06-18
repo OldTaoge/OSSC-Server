@@ -1,6 +1,6 @@
 package space.oldtaoge.ossc.server.provider.cms.config.mapper;
 
-import space.oldtaoge.ossc.server.provider.entity.FkUmsClientCmsConfig;
+import space.oldtaoge.ossc.server.provider.cms.config.entity.FkUmsClientCmsConfig;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

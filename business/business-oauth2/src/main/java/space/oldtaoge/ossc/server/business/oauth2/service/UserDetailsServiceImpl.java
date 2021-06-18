@@ -9,8 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import space.oldtaoge.ossc.server.provider.entity.UmsClient;
-import space.oldtaoge.ossc.server.provider.service.IUmsClientService;
+import space.oldtaoge.ossc.server.provider.ums.client.entity.UmsClient;
+import space.oldtaoge.ossc.server.provider.ums.client.entity.service.IUmsClientService;
+import space.oldtaoge.ossc.server.provider.ums.user.entity.UmsUser;
+import space.oldtaoge.ossc.server.provider.ums.user.service.IUmsUserService;
 
 import java.util.List;
 
@@ -34,18 +36,32 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @DubboReference
     IUmsClientService umsClientService;
 
+    @DubboReference
+    IUmsUserService umsUserService;
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        UmsClient umsClient = umsClientService.getByUUID(s);
-        if (umsClient != null) {
-            List<GrantedAuthority> grantedAuthorities = Lists.newArrayList();
-            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("CLI");
-            grantedAuthorities.add(grantedAuthority);
-            return new User(umsClient.getUuid(), umsClient.getPassword(), grantedAuthorities);
+        User user = null;
+        if (s.startsWith("_c")) {
+            UmsClient umsClient = umsClientService.getByUUID(s.substring(2));
+            if (umsClient != null) {
+                List<GrantedAuthority> grantedAuthorities = Lists.newArrayList();
+                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("client");
+                grantedAuthorities.add(grantedAuthority);
+                user = new User(s, umsClient.getPassword(), grantedAuthorities);
+            }
+        } else if(s.startsWith("_u")) {
+            UmsUser umsUser = umsUserService.getByUUID(s.substring(2));
+            if (umsUser != null) {
+                List<GrantedAuthority> grantedAuthorities = Lists.newArrayList();
+                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("user");
+                grantedAuthorities.add(grantedAuthority);
+                user = new User(s, umsUser.getPassword(), grantedAuthorities);
+            }
         }
-        else {
-            return null;
+        if (user == null) {
+            throw new UsernameNotFoundException(null);
         }
+        return user;
     }
-
 }

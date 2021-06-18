@@ -1,4 +1,4 @@
-package space.oldtaoge.ossc.server.provider.entity;
+package space.oldtaoge.ossc.server.provider.ums.client.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

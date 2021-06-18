@@ -1,9 +1,9 @@
-package space.oldtaoge.ossc.server.provider.service;
+package space.oldtaoge.ossc.server.provider.cms.config.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import space.oldtaoge.ossc.server.provider.entity.CmsConfig;
-import space.oldtaoge.ossc.server.provider.entity.CmsConfigLess;
+import space.oldtaoge.ossc.server.provider.cms.config.entity.CmsConfig;
+import space.oldtaoge.ossc.server.provider.cms.config.entity.CmsConfigLess;
 
 /**
  * <p>
