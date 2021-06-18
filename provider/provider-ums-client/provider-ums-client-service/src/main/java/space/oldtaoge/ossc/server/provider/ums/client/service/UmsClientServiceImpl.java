@@ -1,11 +1,11 @@
-package space.oldtaoge.ossc.server.provider.service;
+package space.oldtaoge.ossc.server.provider.ums.client.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Service;
 import space.oldtaoge.ossc.server.provider.entity.UmsClient;
-import space.oldtaoge.ossc.server.provider.mapper.UmsClientMapper;
+import space.oldtaoge.ossc.server.provider.service.IUmsClientService;
 
 import javax.annotation.Resource;
 
@@ -19,9 +19,9 @@ import javax.annotation.Resource;
  */
 @Service
 @DubboService
-public class UmsClientServiceImpl extends ServiceImpl<UmsClientMapper, UmsClient> implements IUmsClientService {
+public class UmsClientServiceImpl extends ServiceImpl<space.oldtaoge.ossc.server.provider.ums.client.mapper.UmsClientMapper, UmsClient> implements IUmsClientService {
     @Resource
-    UmsClientMapper umsClientMapper;
+    space.oldtaoge.ossc.server.provider.ums.client.mapper.UmsClientMapper umsClientMapper;
     @Override
     public UmsClient getByUUID(String u) {
         QueryWrapper<UmsClient> wrapper =  new QueryWrapper<>();

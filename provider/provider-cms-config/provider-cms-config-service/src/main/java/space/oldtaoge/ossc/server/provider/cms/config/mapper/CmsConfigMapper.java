@@ -1,4 +1,4 @@
-package space.oldtaoge.ossc.server.provider.mapper;
+package space.oldtaoge.ossc.server.provider.cms.config.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;

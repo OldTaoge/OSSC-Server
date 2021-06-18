@@ -6,7 +6,7 @@
 
     <artifactId>commons</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>space.oldtaoge.ossc.server</groupId>

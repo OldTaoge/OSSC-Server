@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import space.oldtaoge.ossc.server.business.oauth2.UmsClientDubbo;
+import space.oldtaoge.ossc.server.business.ums.client.UmsClientDubbo;
 import space.oldtaoge.ossc.server.commons.CodeStatus;
 import space.oldtaoge.ossc.server.commons.dto.AbstractBaseResult;
 import space.oldtaoge.ossc.server.commons.dto.BaseResultFactory;

@@ -1,4 +1,4 @@
-package space.oldtaoge.ossc.server.provider.controller;
+package space.oldtaoge.ossc.server.provider.cms.config.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;

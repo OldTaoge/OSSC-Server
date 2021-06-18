@@ -40,6 +40,10 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
         <!-- Spring Boot End -->
 
         <!-- Apache Dubbo Begin -->
@@ -122,7 +126,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>space.oldtaoge.ossc.server.provider.ProviderCmsConfigServiceApplication</mainClass>
+                    <mainClass>space.oldtaoge.ossc.server.provider.cms.config.ProviderCmsConfigServiceApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

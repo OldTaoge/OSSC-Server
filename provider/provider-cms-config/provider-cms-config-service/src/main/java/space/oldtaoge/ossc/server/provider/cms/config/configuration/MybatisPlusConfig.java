@@ -1,4 +1,4 @@
-package space.oldtaoge.ossc.server.provider.configuration;
+package space.oldtaoge.ossc.server.provider.cms.config.configuration;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;

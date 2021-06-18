@@ -1,4 +1,4 @@
-package space.oldtaoge.ossc.server.provider.controller;
+package space.oldtaoge.ossc.server.provider.ums.client.controller;
 
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +10,7 @@ import space.oldtaoge.ossc.server.commons.CodeStatus;
 import space.oldtaoge.ossc.server.commons.dto.AbstractBaseResult;
 import space.oldtaoge.ossc.server.commons.dto.BaseResultFactory;
 import space.oldtaoge.ossc.server.provider.entity.UmsClient;
-import space.oldtaoge.ossc.server.provider.service.UmsClientServiceImpl;
+import space.oldtaoge.ossc.server.provider.ums.client.service.UmsClientServiceImpl;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
