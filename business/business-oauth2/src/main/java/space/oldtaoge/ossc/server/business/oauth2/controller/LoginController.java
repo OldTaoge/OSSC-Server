@@ -2,8 +2,6 @@ package space.oldtaoge.ossc.server.business.oauth2.controller;
 
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,8 +18,11 @@ import space.oldtaoge.ossc.server.commons.CodeStatus;
 import space.oldtaoge.ossc.server.commons.dto.AbstractBaseResult;
 import space.oldtaoge.ossc.server.commons.dto.BaseResultFactory;
 import space.oldtaoge.ossc.server.commons.dto.SuccessResult;
-import space.oldtaoge.ossc.server.provider.entity.UmsClient;
-import space.oldtaoge.ossc.server.provider.service.IUmsClientService;
+import space.oldtaoge.ossc.server.commons.utils.AuthenticationUtils;
+import space.oldtaoge.ossc.server.provider.ums.client.entity.UmsClient;
+import space.oldtaoge.ossc.server.provider.ums.client.entity.service.IUmsClientService;
+import space.oldtaoge.ossc.server.provider.ums.user.entity.UmsUser;
+import space.oldtaoge.ossc.server.provider.ums.user.service.IUmsUserService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +40,7 @@ import java.util.Map;
  * @see space.oldtaoge.ossc.server.business.oauth2.controller
  */
 @RestController
-@RequestMapping("user")
+@RequestMapping("login")
 public class LoginController {
     @Resource
     private LoginService loginService;
@@ -56,6 +57,9 @@ public class LoginController {
     @DubboReference
     private IUmsClientService umsClientService;
 
+    @DubboReference
+    private IUmsUserService umsUserService;
+
     @Resource
     private TokenStore tokenStore;
 
@@ -64,13 +68,22 @@ public class LoginController {
      * @param loginParam 登录参数
      * @return Restful Result
      */
-    @PostMapping(value = "login")
-    public AbstractBaseResult login(@RequestBody LoginParam loginParam) {
+    @PostMapping(value = "client")
+    public AbstractBaseResult clientLogin(@RequestBody LoginParam loginParam) {
+        String uniqueUUID = "_c" + loginParam.getUsername();
+        return baseLogin(uniqueUUID, loginParam.getPassword());
+    }
 
-        // 验证密码是否正确
-        UserDetails userDetails = userDetailsService.loadUserByUsername(loginParam.getUsername());
-        if (userDetails != null && passwordEncoder.matches(loginParam.getPassword(), userDetails.getPassword())) {
-            Map<String, String> loginStatus = loginService.baseLogin(loginParam.getUsername(), loginParam.getPassword());
+    @PostMapping(value = "user")
+    public AbstractBaseResult userLogin(@RequestBody LoginParam loginParam) {
+        String uniqueUUID = "_u" + loginParam.getUsername();
+        return baseLogin(uniqueUUID, loginParam.getPassword());
+    }
+
+    private AbstractBaseResult baseLogin(String u, String p) {
+        UserDetails userDetails = userDetailsService.loadUserByUsername(u);
+        if (userDetails != null && passwordEncoder.matches(p, userDetails.getPassword())) {
+            Map<String, String> loginStatus = loginService.baseLogin(u, p);
             Map<String, Object> result = new HashMap<>();
             result.put("token", loginStatus.get("token"));
             if (loginStatus.get("status").equals("0"))
@@ -78,37 +91,34 @@ public class LoginController {
                 return BaseResultFactory.getInstance().build(request.getRequestURI(), new SuccessResult.SuccessData("token", result));
             }
         }
-        return BaseResultFactory.getInstance().build(CodeStatus.BadRequest, "Bad credentials", "error:invalid_grant,error_description:Bad credentials", "DEBUG");
+        return BaseResultFactory.getInstance().build(CodeStatus.BadRequest, "Bad credentials", "error:invalid_username,invalid_password,error_description:Bad credentials", "DEBUG");
     }
 
     /**
      * 获取用户信息
      *
      */
-    @PreAuthorize("hasAuthority('CLI')")
+    @PreAuthorize("hasAuthority('client') OR hasAuthority('user')")
     @GetMapping(value = "info")
     public AbstractBaseResult info() {
-        // 获取 token
-//        String token = request.getParameter("access_token");
-        // 获取认证信息
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        AuthenticationUtils.LoginAble loginObj = AuthenticationUtils.getInstance().getLoginObj();
 
-
-        UmsClient umsclient = umsClientService.getByUUID(authentication.getName());
-        // 封装并返回结果
-//        LoginInfo loginInfo = new LoginInfo();
-//        loginInfo.setName(authentication.getName());
-//        loginInfo.setAvatar("");
-//        loginInfo.setToken(token);
-//        return new ResponseResult<LoginInfo>(ResponseResult.CodeStatus.OK, "获取用户信息", loginInfo);
-        return BaseResultFactory.getInstance().build(request.getRequestURI(), umsclient);
-//        return umsclient;
+        if(loginObj.getLoginClass().equals("UmsClient"))
+        {
+            UmsClient umsclient = umsClientService.getByUUID(loginObj.getRealName());
+            return BaseResultFactory.getInstance().build(request.getRequestURI(), umsclient);
+        } else if(loginObj.getLoginClass().equals("UmsUser"))
+        {
+            UmsUser umsUser = umsUserService.getByUUID(loginObj.getRealName());
+            return BaseResultFactory.getInstance().build(request.getRequestURI(), umsUser);
+        }
+        return null;
     }
 
     /**
      * 注销
      */
-    @PreAuthorize("hasAuthority('CLI')")
+    @PreAuthorize("hasAuthority('client') OR hasAuthority('user')")
     @PostMapping(value = "logout")
     public AbstractBaseResult logout() {
         // 获取 token

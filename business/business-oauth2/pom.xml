@@ -127,7 +127,11 @@
             <artifactId>provider-ums-client-service</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>space.oldtaoge.ossc.server</groupId>
+            <artifactId>provider-ums-user-service</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
         <!-- Project End-->
 
 

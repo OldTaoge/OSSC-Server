@@ -46,6 +46,10 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
 
         <!-- Apache Dubbo Begin -->
         <dependency>
@@ -61,6 +65,7 @@
             <groupId>com.alibaba.nacos</groupId>
             <artifactId>nacos-client</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.alibaba.spring</groupId>
             <artifactId>spring-context-support</artifactId>
@@ -87,6 +92,11 @@
         </dependency>
         <dependency>
             <groupId>space.oldtaoge.ossc.server</groupId>
+            <artifactId>provider-ums-client-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>space.oldtaoge.ossc.server</groupId>
             <artifactId>provider-cms-config-api</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -98,7 +108,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>space.oldtaoge.ossc.server.business.cms.config.BusinessOUmsClientServiceApplication</mainClass>
+                    <mainClass>space.oldtaoge.ossc.server.business.cms.config.BusinessCmsConfigServiceApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

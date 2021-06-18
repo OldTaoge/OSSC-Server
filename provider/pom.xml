@@ -16,6 +16,7 @@
 
     <modules>
         <module>provider-ums-client</module>
+        <module>provider-ums-user</module>
         <module>provider-cms-config</module>
         <module>provider-generator</module>
     </modules>

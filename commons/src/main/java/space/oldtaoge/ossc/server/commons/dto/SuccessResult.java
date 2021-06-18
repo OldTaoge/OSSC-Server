@@ -28,8 +28,8 @@ public class SuccessResult<T extends AbstractBaseDomain> extends AbstractBaseRes
         links = new Links();
         links.setSelf(self);
         long lastPage = total/length + (length > total? 1:0);
-        links.setNext(self + "?length =" + length + "&current=" + current);
-        links.setLast(self + "?length =" + length + "&current=" + lastPage);
+        links.setNext(self + "?length=" + length + "&current=" + current);
+        links.setLast(self + "?length=" + length + "&current=" + lastPage);
 
         attributes.forEach(attribute -> createDataBean(dataBaseLink != null ? dataBaseLink : self, attribute));
     }

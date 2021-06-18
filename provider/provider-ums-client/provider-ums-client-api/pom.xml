@@ -14,13 +14,4 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <developers>
-        <developer>
-            <id>oldtaoge</id>
-            <name>OldTaoge</name>
-            <email>admin@oldtaoge.space</email>
-        </developer>
-    </developers>
-
-
 </project>

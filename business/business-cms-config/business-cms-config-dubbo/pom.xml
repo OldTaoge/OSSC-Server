@@ -63,15 +63,4 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>space.oldtaoge.ossc.server.business.BusinessOUmsClientDubboApplication</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
