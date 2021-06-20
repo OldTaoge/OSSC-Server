@@ -6,10 +6,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import space.oldtaoge.ossc.server.business.oauth2.service.UserDetailsServiceImpl;
 
 /**
@@ -25,6 +28,7 @@ import space.oldtaoge.ossc.server.business.oauth2.service.UserDetailsServiceImpl
  */
 @Configuration
 @EnableWebSecurity
+@EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -41,9 +45,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("admin").password(passwordEncoder().encode("123456")).roles("ADMIN");
-//        auth.userDetailsService(userDetailsServiceBean());
+//        auth.inMemoryAuthentication()
+//                .withUser("admin").password(passwordEncoder().encode("123456")).roles("ADMIN");
+        auth.userDetailsService(userDetailsServiceBean());
     }
 
     /**
@@ -54,19 +58,23 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-//
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers("/user/login");
-//    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+                .ignoring().antMatchers("/login/client").and()
+                .ignoring().antMatchers("/login/user");
+    }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-//        super.configure(http);
-        http.authorizeRequests()
-                .antMatchers("/user/login").permitAll()
-                .anyRequest().authenticated();
-                http.csrf().disable();
-                http.cors();
+        http.exceptionHandling()
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+/*        http.authorizeRequests()
+//                .antMatchers("/user/login").permitAll()
+                .antMatchers("/user/info").hasRole("USER")
+                .antMatchers("/user/logout").hasRole("USER")
+                .anyRequest().authenticated();*/
+        http.csrf().disable();
     }
 }

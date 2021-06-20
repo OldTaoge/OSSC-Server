@@ -14,6 +14,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>business-oauth2</module>
+        <module>business-ums-client</module>
+        <module>business-cms-config</module>
+    </modules>
+
     <properties>
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -21,20 +27,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-
-    <licenses>
-        <license>
-            <url>https://raw.githubusercontent.com/OldTaoge/OSSC-Server/main/LICENSE</url>
-        </license>
-    </licenses>
-
-    <developers>
-        <developer>
-            <id>oldtaoge</id>
-            <name>OldTaoge</name>
-            <email>admin@oldtaoge.space</email>
-        </developer>
-    </developers>
 
     <dependencies>
         <!-- Projects Begin -->
@@ -47,8 +39,6 @@
         <!-- Projects End -->
     </dependencies>
 
-    <modules>
-        <module>business-oauth2</module>
-    </modules>
+
     
 </project>

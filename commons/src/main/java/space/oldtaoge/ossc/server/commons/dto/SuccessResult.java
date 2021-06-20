@@ -1,6 +1,5 @@
 package space.oldtaoge.ossc.server.commons.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,16 +24,17 @@ public class SuccessResult<T extends AbstractBaseDomain> extends AbstractBaseRes
         createDataBean(null, attributes);
     }
 
-    public SuccessResult(String self, int next, int last, List<T> attributes) {
+    public SuccessResult(String self, Long current, Long length, Long total, String dataBaseLink, List<? extends T> attributes) {
         links = new Links();
         links.setSelf(self);
-        links.setNext(self + "?page=" + next);
-        links.setLast(self + "?page=" + last);
+        long lastPage = total/length + (length > total? 1:0);
+        links.setNext(self + "?length=" + length + "&current=" + current);
+        links.setLast(self + "?length=" + length + "&current=" + lastPage);
 
-        attributes.forEach(attribute -> createDataBean(self, attribute));
+        attributes.forEach(attribute -> createDataBean(dataBaseLink != null ? dataBaseLink : self, attribute));
     }
 
-    private void createDataBean(String self, T attributes) {
+    private void createDataBean(String self,T attributes) {
         if (data == null) {
             data = Lists.newArrayList();
         }

@@ -52,7 +52,7 @@ public class LoginServiceImpl implements LoginService {
             Response response = OkHttpClientUtil.getInstance().postData(URL_OAUTH_TOKEN, params);
             String jsonString = Objects.requireNonNull(response.body()).string();
             Map<String, Object> jsonMap = JsonUtils.json2map(jsonString);
-            String token = String.valueOf(jsonMap.get("access_token"));
+            String token = (String) jsonMap.get("access_token");
             result.put("token", token);
         } catch (Exception e) {
             e.printStackTrace();
