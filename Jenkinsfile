@@ -13,7 +13,7 @@ pipeline {
         ImageName='OSSC-Server'
         artifacts = [
             'business-cms-config-service',
-            'business-ums-client-service",
+            'business-ums-client-service',
             'business-oauth2',
             'provider-cms-config-service',
             'provider-ums-client-service',
