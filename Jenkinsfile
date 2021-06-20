@@ -50,7 +50,7 @@ pipeline {
                     archiveArtifacts artifacts: "${path[i]}*.jar", fingerprint: true
                 }
                 for (int i = 0; i < artifacts.size(); ++i) {
-                    sh "docker build -t ossc-server-${artifacts[i]}:latest ${path[i]}"
+                    sh "docker build -f Dockerfile -t ossc-server-${artifacts[i]}:latest ${path[i]}"
                     sh "docker tag ossc-server-${artifacts[i]}:latest docker.oldtaoge.space:5000/ossc-server-${artifacts[i]}:latest"
                     sh "docker push docker.oldtaoge.space:5000/ossc-server-${artifacts[i]}:latest"
                     sh "docker image rm docker.oldtaoge.space:5000/ossc-server-${artifacts[i]}:latest"
