@@ -23,7 +23,7 @@ pipeline {
 
       stage('build') {
           steps {
-              sh 'mvn clean package -Dmaven.test.skip=true'
+              sh 'mvn package -Dmaven.test.skip=true'
           }
        }
 
@@ -50,11 +50,11 @@ pipeline {
                     archiveArtifacts artifacts: "${path[i]}*.jar", fingerprint: true
                 }
                 for (int i = 0; i < artifacts.size(); ++i) {
-                    sh 'docker build -t ossc-server-${artifacts[i]}:latest ${path[i]}'
-                    sh 'docker tag ossc-server-${artifacts[i]}:latest docker.oldtaoge.space:5000/ossc-server-${artifacts[i]}:latest'
-                    sh 'docker push docker.oldtaoge.space:5000/ossc-server-${artifacts[i]}:latest'
-                    sh 'docker image rm docker.oldtaoge.space:5000/ossc-server-${artifacts[i]}:latest'
-                    sh 'docker image rm ossc-server-${artifacts[i]}:latest'
+                    sh "docker build -t ossc-server-${artifacts[i]}:latest ${path[i]}"
+                    sh "docker tag ossc-server-${artifacts[i]}:latest docker.oldtaoge.space:5000/ossc-server-${artifacts[i]}:latest"
+                    sh "docker push docker.oldtaoge.space:5000/ossc-server-${artifacts[i]}:latest"
+                    sh "docker image rm docker.oldtaoge.space:5000/ossc-server-${artifacts[i]}:latest"
+                    sh "docker image rm ossc-server-${artifacts[i]}:latest"
                 }
             }
         }
