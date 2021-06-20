@@ -47,7 +47,7 @@ pipeline {
                         'provider/provider-ums-user/provider-ums-user-service/target/',
                         'gateway/target/']
                 for (int i = 0; i < artifacts.size(); ++i) {
-                    archiveArtifacts artifacts: "${path[i]}/artifacts-*.jar", fingerprint: true
+                    archiveArtifacts artifacts: "${path[i]}*.jar", fingerprint: true
                 }
                 for (int i = 0; i < artifacts.size(); ++i) {
                     sh 'docker build -t ossc-server-${artifacts[i]}:latest ${path[i]}'
