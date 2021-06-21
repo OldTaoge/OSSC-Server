@@ -36,7 +36,7 @@ pipeline {
                     'business-oauth2',
                     'provider-cms-config-service',
                     'provider-ums-client-service',
-                    'provider-ums-user',
+                    'provider-ums-user-service',
                     'gateway']
                 path = [
                         'business/business-cms-config/business-cms-config-service/target/',
